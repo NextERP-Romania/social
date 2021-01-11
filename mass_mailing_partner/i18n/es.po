@@ -103,7 +103,6 @@ msgstr "Lista de correo"
 #. module: mass_mailing_partner
 #: model:ir.model,name:mass_mailing_partner.model_mailing_trace
 #, fuzzy
-#| msgid "Email Statistics"
 msgid "Mailing Statistics"
 msgstr "Estadísticas de email"
 
@@ -144,6 +143,11 @@ msgstr "Estadísticas de envío masivo"
 #: model:ir.model.fields,field_description:mass_mailing_partner.field_res_users__mass_mailing_stats_count
 msgid "Mass mailing stats number"
 msgstr "Número de estadísticas de envío masivo"
+
+#. module: mass_mailing_partner
+#: model:ir.model,name:mass_mailing_partner.model_base_partner_merge_automatic_wizard
+msgid "Merge Partner Wizard"
+msgstr ""
 
 #. module: mass_mailing_partner
 #: model:ir.model.fields,field_description:mass_mailing_partner.field_mailing_contact__partner_id
