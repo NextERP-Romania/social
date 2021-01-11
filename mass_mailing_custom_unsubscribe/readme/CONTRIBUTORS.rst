@@ -5,3 +5,5 @@
   * Jairo Llopis
   * David Vidal
   * Ernesto Tejeda
+  * Pedro M. Baeza
+  * Víctor Martínez

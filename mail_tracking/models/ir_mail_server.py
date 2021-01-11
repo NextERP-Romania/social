@@ -22,7 +22,7 @@ class IrMailServer(models.Model):
         # https://regex101.com/r/lW4cB1/2
         match = re.search(
             r'<img[^>]*data-odoo-tracking-email=["\']([0-9]*)["\']', body)
-        return int(match.group(1)) if match.group(1) else False
+        return int(match.group(1)) if match and match.group(1) else False
 
     def build_email(self, email_from, email_to, subject, body, email_cc=None,
                     email_bcc=None, reply_to=False, attachments=None,
@@ -80,9 +80,11 @@ class IrMailServer(models.Model):
         except Exception as e:
             if tracking_email:
                 tracking_email.smtp_error(self, smtp_server_used, e)
-        if message_id and tracking_email:
-            vals = tracking_email._tracking_sent_prepare(
-                self, smtp_server_used, message, message_id)
-            if vals:
-                self.env['mail.tracking.event'].sudo().create(vals)
+            raise
+        finally:
+            if message_id and tracking_email:
+                vals = tracking_email._tracking_sent_prepare(
+                    self, smtp_server_used, message, message_id)
+                if vals:
+                    self.env['mail.tracking.event'].sudo().create(vals)
         return message_id
